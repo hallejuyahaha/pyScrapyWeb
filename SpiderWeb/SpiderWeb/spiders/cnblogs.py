@@ -24,9 +24,10 @@ class JobboleSpider(scrapy.Spider):
             yield Request(url=parse.urljoin(response.url, post_url), callback=self.parse_detail)
 
         # 提取下一页并交给scrapy进行下载
-        next_url = response.xpath("//div[@class='pager']/a[last()]")
+        next_url = response.xpath("//div[@class='pager']/a[last()]/@href").extract_first("")
         if next_url:
-            yield Request(url=self.parse.urljoin(response.url, next_url), callback=self.parse)
+            uurl = parse.urljoin(response.url, next_url)
+            yield Request(url=uurl, callback=self.parse)
 
         pass
 
