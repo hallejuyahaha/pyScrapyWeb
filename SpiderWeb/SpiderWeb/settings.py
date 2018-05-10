@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import  os
 # Scrapy settings for SpiderWeb project
 #
 # For simplicity, this file contains only settings considered important or
@@ -68,6 +68,11 @@ ITEM_PIPELINES = {
    # 'SpiderWeb.pipelines.SpiderwebPipeline': 300,
    'SpiderWeb.pipelines.MysqlPipeline': 1,
 }
+
+
+import sys
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print (os.path.join(BASE_DIR, 'SpiderWeb'))
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
